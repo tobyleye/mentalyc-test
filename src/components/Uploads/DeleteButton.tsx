@@ -12,7 +12,12 @@ export function DeleteButton({ onConfirm }: { onConfirm: () => void }) {
 
   return (
     <>
-      <BaseModal open={showConfirm} onClose={() => {}}>
+      <BaseModal
+        showDismissButton={false}
+        size="small"
+        open={showConfirm}
+        onClose={() => {}}
+      >
         <div className="mb-6 text-center">
           <h3 className="font-bold text-xl mb-1">Are you sure?</h3>
           <p className="text-gray-400"> This action cannot be undone</p>
