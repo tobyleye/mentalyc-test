@@ -3,7 +3,13 @@ import { Button } from "../Button";
 import { BaseModal } from "../BaseModal";
 import TrashIcon from "@/icons/Trash";
 
-export function DeleteButton({ onConfirm }: { onConfirm: () => void }) {
+export function DeleteButton({
+  onConfirm,
+  index,
+}: {
+  onConfirm: () => void;
+  index: number;
+}) {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const closeConfirm = () => {
@@ -16,7 +22,7 @@ export function DeleteButton({ onConfirm }: { onConfirm: () => void }) {
         showDismissButton={false}
         size="small"
         open={showConfirm}
-        onClose={() => {}}
+        onClose={closeConfirm}
       >
         <div className="mb-6 text-center">
           <h3 className="font-bold text-xl mb-1">Are you sure?</h3>
@@ -25,6 +31,7 @@ export function DeleteButton({ onConfirm }: { onConfirm: () => void }) {
 
         <div className="flex items-center justify-center gap-2">
           <Button
+            data-testid={`note-delete-button-${index}-yes`}
             onClick={() => {
               onConfirm();
               closeConfirm();
@@ -38,6 +45,8 @@ export function DeleteButton({ onConfirm }: { onConfirm: () => void }) {
         </div>
       </BaseModal>
       <button
+        data-testid={`note-delete-button-${index}`}
+        aria-label="delete"
         onClick={() => {
           setShowConfirm(true);
         }}

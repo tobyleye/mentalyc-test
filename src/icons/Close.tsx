@@ -7,18 +7,18 @@ export default function CloseIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_417_1155)">
+      <g clipPath="url(#clip0_417_1155)">
         <path
           d="M16.9999 7L7 16.9999"
           stroke="black"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
         <path
           d="M7 7L16.9999 16.9999"
           stroke="black"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
       </g>
       <defs>

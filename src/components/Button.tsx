@@ -1,10 +1,7 @@
 import { ReactNode } from "react";
 import cx from "clsx";
 
-type ButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: "primary" | "default";
   children: ReactNode;
 };
@@ -32,6 +29,11 @@ export function Button({
             #de0d6f 16.23%,
             #731054 83.77%
           );
+          transition: 0.25s;
+        }
+
+        .btn:not(:disabled):hover {
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .btn-primary:disabled {

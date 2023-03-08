@@ -3,6 +3,12 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        fontFamily: {
+          body: ["var(--font-montserat)"],
+          heading: ["var(--font-poppins)"],
+        },
+      },
       colors: {
         primary: {
           400: "var(--color-primary-400)",

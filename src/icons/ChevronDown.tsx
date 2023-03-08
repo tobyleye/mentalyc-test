@@ -7,12 +7,12 @@ export function ChevronDownIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_417_1082)">
+      <g clipPath="url(#clip0_417_1082)">
         <path
           d="M18 10L12.3536 15.6464C12.1583 15.8417 11.8417 15.8417 11.6464 15.6464L6 10"
           stroke="#B2B2B2"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
       </g>
       <defs>

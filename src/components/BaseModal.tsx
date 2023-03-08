@@ -1,5 +1,5 @@
-import { Dialog } from "@headlessui/react";
-import { ReactNode } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, ReactNode } from "react";
 import cx from "clsx";
 import CloseIcon from "@/icons/Close";
 
@@ -30,41 +30,61 @@ export function BaseModal({
     return sizeClassMap[size] ?? sizeClassMap.normal;
   };
   return (
-    <Dialog open={open} onClose={onClose} className="relative z-50">
-      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel
-          className={cx(
-            "mx-auto w-full rounded-2xl bg-white py-5 px-10",
-            getSizeClassNames()
-          )}
+    <Transition appear show={open} as={Fragment}>
+      <Dialog onClose={onClose} className="relative z-50">
+        <Transition.Child
+          enter="ease duration-150"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease duration-150"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          {showDismissButton && (
-            <div className="flex justify-end">
-              <button onClick={onClose}>
-                <CloseIcon />
-              </button>
-            </div>
-          )}
-          {title && description ? (
-            <header className="text-center mb-8">
-              {title && (
-                <Dialog.Title className="text-xl font-bold ">
-                  {title}
-                </Dialog.Title>
-              )}
+          <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+        </Transition.Child>
 
-              {description && (
-                <Dialog.Description className="text-gray-400">
-                  {description}
-                </Dialog.Description>
+        <div className="fixed inset-0 flex items-center justify-center p-4">
+          <Transition.Child
+            as={Fragment}
+            enter="ease duration-150"
+            enterFrom="opacity-0 scale-105 "
+            enterTo="opacity-100 scale-100"
+            leave="ease duration-150"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0"
+          >
+            <Dialog.Panel
+              className={cx(
+                "mx-auto w-full rounded-2xl bg-white py-5 px-10",
+                getSizeClassNames()
               )}
-            </header>
-          ) : null}
+            >
+              {showDismissButton && (
+                <div className="flex justify-end">
+                  <button onClick={onClose}>
+                    <CloseIcon />
+                  </button>
+                </div>
+              )}
+              {title && description ? (
+                <header className="text-center mb-8">
+                  {title && (
+                    <Dialog.Title className="h4 mb-1">{title}</Dialog.Title>
+                  )}
 
-          <div>{children}</div>
-        </Dialog.Panel>
-      </div>
-    </Dialog>
+                  {description && (
+                    <Dialog.Description className="text-gray-400">
+                      {description}
+                    </Dialog.Description>
+                  )}
+                </header>
+              ) : null}
+
+              <div>{children}</div>
+            </Dialog.Panel>
+          </Transition.Child>
+        </div>
+      </Dialog>
+    </Transition>
   );
 }

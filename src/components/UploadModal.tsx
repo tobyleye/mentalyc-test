@@ -29,11 +29,22 @@ export function UploadModal({ open, onClose, onSubmit }: UploadModalProps) {
   const [clientName, setClientName] = useState("");
 
   const disabled = !noteType || !clientName;
+
+  const clearForm = () => {
+    setNoteType("");
+    setClientName("");
+  };
+
+  const handleClose = () => {
+    clearForm();
+    onClose();
+  };
+
   return (
     <>
       <BaseModal
         open={open}
-        onClose={onClose}
+        onClose={handleClose}
         title={"Complete Your Upload"}
         description="Fill in the details below to complete your upload"
       >
@@ -42,7 +53,7 @@ export function UploadModal({ open, onClose, onSubmit }: UploadModalProps) {
             onSubmit={(e) => {
               e.preventDefault();
               onSubmit(noteType, clientName);
-              onClose();
+              handleClose();
             }}
           >
             <div className="grid gap-10">
