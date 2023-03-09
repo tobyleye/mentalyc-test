@@ -45,7 +45,7 @@ export function SelectField({
       <div>
         <Listbox.Button
           data-testid="select-btn"
-          className="w-full text-left bg-[#F2F2F2] h-10 px-6 rounded-lg focus:outline-none focus:outline-slate-200"
+          className="w-full text-left bg-[#F2F2F2] h-10 px-6 rounded-lg border-2 border-transparent focus:border-primary-400 focus:bg-white"
         >
           {({ open, value }) => (
             <div className="flex gap-4 items-center">

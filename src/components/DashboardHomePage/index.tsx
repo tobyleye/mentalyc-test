@@ -6,11 +6,21 @@ import HelpIcon from "@/icons/Help";
 import Head from "next/head";
 import { useState } from "react";
 import { useUploads } from "./hooks/useUploads";
+import { toast } from "react-hot-toast";
 
 export default function DashboardHomePage() {
   const [showUploadModal, setShowUploadModal] = useState(false);
   const { uploads, addNewUpload, deleteUpload } = useUploads();
 
+  const handleNewUpload = (noteType: string, clientName: string) => {
+    addNewUpload(noteType, clientName);
+    toast.success("new recording session added");
+  };
+
+  const handleDelete = (index: number) => {
+    deleteUpload(index);
+    toast.success("upload deleted");
+  };
   return (
     <>
       <DashboardLayout>
@@ -19,7 +29,7 @@ export default function DashboardHomePage() {
         </Head>
         <div className="py-6">
           <UploadModal
-            onSubmit={addNewUpload}
+            onSubmit={handleNewUpload}
             open={showUploadModal}
             onClose={() => setShowUploadModal(false)}
           />
@@ -39,7 +49,7 @@ export default function DashboardHomePage() {
             </Button>
           </section>
 
-          <Uploads uploads={uploads} onDelete={deleteUpload} />
+          <Uploads uploads={uploads} onDelete={handleDelete} />
         </div>
       </DashboardLayout>
     </>
