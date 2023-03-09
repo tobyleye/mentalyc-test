@@ -55,7 +55,7 @@ export function BaseModal({
           >
             <Dialog.Panel
               className={cx(
-                "mx-auto w-full rounded-2xl bg-white py-5 px-10",
+                "mx-auto w-full rounded-2xl bg-white py-5 px-6 lg:px-10",
                 getSizeClassNames()
               )}
             >

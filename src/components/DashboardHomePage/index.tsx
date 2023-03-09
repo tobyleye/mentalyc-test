@@ -19,7 +19,7 @@ export default function DashboardHomePage() {
 
   const handleDelete = (index: number) => {
     deleteUpload(index);
-    toast.success("upload deleted");
+    toast.success("recording session deleted");
   };
   return (
     <>
@@ -27,7 +27,7 @@ export default function DashboardHomePage() {
         <Head>
           <title>Mentalyc Dashboard</title>
         </Head>
-        <div className="py-6">
+        <div className="pb-6">
           <UploadModal
             onSubmit={handleNewUpload}
             open={showUploadModal}
@@ -36,10 +36,10 @@ export default function DashboardHomePage() {
 
           <section className="mb-24">
             <div className="flex justify-between  mb-6 items-center">
-              <div className="text-[20px]">Hi, Maria</div>
+              <div className="md:text-[20px]">Hi, Maria</div>
               <HelpIcon />
             </div>
-            <h2 className="h3 mb-4">Upload your session’s recordings</h2>
+            <h2 className="h3 mb-6">Upload your session’s recordings</h2>
             <Button
               data-testid="upload"
               className="w-full"
