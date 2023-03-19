@@ -4,7 +4,7 @@ import { Button } from "./Button";
 import { SelectField } from "./SelectField";
 import { TextField } from "./TextField";
 
-type UploadModalProps = {
+export type UploadFormProps = {
   open: boolean;
   onClose: () => void;
   onSubmit: (noteType: string, clientName: string) => void;
@@ -24,7 +24,7 @@ const noteOptions = [
   },
 ];
 
-export function UploadModal({ open, onClose, onSubmit }: UploadModalProps) {
+export function UploadForm({ open, onClose, onSubmit }: UploadFormProps) {
   const [noteType, setNoteType] = useState("");
   const [clientName, setClientName] = useState("");
 

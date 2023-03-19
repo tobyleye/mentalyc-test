@@ -1,14 +1,13 @@
-import { SelectField } from "@/components/SelectField";
-import { screen, render, fireEvent, waitFor } from "@testing-library/react";
+import { screen, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { UploadModal } from "@/components/UploadModal";
+import { UploadForm } from "@/components/UploadForm";
 
 describe("Upload Modal", () => {
   it("renders without errors", async () => {
     const handleClose = jest.fn();
     const handleSubmit = jest.fn();
     render(
-      <UploadModal open={true} onClose={handleClose} onSubmit={handleSubmit} />
+      <UploadForm open={true} onClose={handleClose} onSubmit={handleSubmit} />
     );
     waitFor(() => {
       expect(screen.getByText(/Complete Your Upload/)).toBeInTheDocument();
